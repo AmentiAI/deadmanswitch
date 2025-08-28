@@ -1,18 +1,23 @@
-// Polyfills for Node.js compatibility in the browser
-import { Buffer } from 'buffer';
-
-// Make Buffer available globally
-(window as any).Buffer = Buffer;
-
-if (typeof global === 'undefined') {
-  (window as any).global = window;
+// Polyfills for globalThis and related issues
+if (typeof globalThis === 'undefined') {
+  (globalThis as any) = global || window || self
 }
 
+// Handle globalXpub issue
+if (typeof (globalThis as any).globalXpub === 'undefined') {
+  (globalThis as any).globalXpub = undefined
+}
+
+// Ensure buffer is available
+if (typeof window !== 'undefined') {
+  (window as any).Buffer = (window as any).Buffer || require('buffer').Buffer
+}
+
+// Handle process.env
 if (typeof process === 'undefined') {
-  (window as any).process = { env: {} };
+  (globalThis as any).process = { env: {} }
+} else if (!process.env) {
+  process.env = {}
 }
 
-// Ensure Buffer is available in the global scope
-if (typeof (window as any).Buffer === 'undefined') {
-  (window as any).Buffer = Buffer;
-}
+export {}
