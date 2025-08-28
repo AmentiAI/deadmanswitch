@@ -1,0 +1,73 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  * {
+    @apply border-border-color;
+  }
+  
+  body {
+    @apply bg-dark-bg text-text-primary font-sans;
+    font-feature-settings: "rlig" 1, "calt" 1;
+  }
+}
+
+@layer components {
+  .btn-primary {
+    @apply bg-bitcoin-orange hover:bg-bitcoin-gold text-white font-semibold py-3 px-6 rounded-lg transition-all duration-200 transform hover:scale-105 focus:outline-none focus:ring-2 focus:ring-bitcoin-orange focus:ring-opacity-50;
+  }
+  
+  .btn-secondary {
+    @apply bg-transparent border-2 border-bitcoin-orange text-bitcoin-orange hover:bg-bitcoin-orange hover:text-white font-semibold py-3 px-6 rounded-lg transition-all duration-200 transform hover:scale-105 focus:outline-none focus:ring-2 focus:ring-bitcoin-orange focus:ring-opacity-50;
+  }
+  
+  .card {
+    @apply bg-card-bg border border-border-color rounded-xl p-6 shadow-lg;
+  }
+  
+  .input-field {
+    @apply w-full bg-card-bg border border-border-color rounded-lg px-4 py-3 text-text-primary placeholder-text-secondary focus:outline-none focus:ring-2 focus:ring-bitcoin-orange focus:border-transparent transition-all duration-200;
+  }
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  @apply bg-card-bg;
+}
+
+::-webkit-scrollbar-thumb {
+  @apply bg-bitcoin-orange rounded-full;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  @apply bg-bitcoin-gold;
+}
+
+/* Gaming Effects */
+.text-shadow-glow {
+  text-shadow: 0 0 10px currentColor, 0 0 20px currentColor, 0 0 30px currentColor;
+}
+
+.scanning-line {
+  background: linear-gradient(90deg, transparent, rgba(247, 147, 26, 0.5), transparent);
+  animation: scan 2s linear infinite;
+}
+
+@keyframes scan {
+  0% { transform: translateX(-100%); }
+  100% { transform: translateX(100%); }
+}
+
+.terminal-text {
+  font-family: 'JetBrains Mono', monospace;
+  text-shadow: 0 0 5px currentColor;
+}
+
+.cyber-glow {
+  box-shadow: 0 0 20px rgba(247, 147, 26, 0.5), inset 0 0 20px rgba(247, 147, 26, 0.1);
+}
